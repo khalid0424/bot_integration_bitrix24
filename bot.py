@@ -43,7 +43,7 @@ def create_payment_method_keyboard():
 def create_tariffs_keyboard(course_id):
     keyboard = InlineKeyboardMarkup()
     for tariff_id, tariff_info in tariffs.items():
-        button_text = f"{tariff_info['name']} - {tariff_info['price']} сомони"
+        button_text = f"{tariff_info['name']} - {tariff_info['price']} рубл"
         keyboard.add(InlineKeyboardButton(button_text, callback_data=f"tariff_{course_id}_{tariff_id}"))
     return keyboard
 
@@ -76,6 +76,10 @@ def start_handler(message):
 @bot.message_handler(content_types=["contact"])
 def contact_handler(message):
     user_id = message.from_user.id
+    
+    if user_id not in user_states:
+        user_states[user_id] = {}
+    
     user_states[user_id]["phone"] = message.contact.phone_number
 
     bot.send_message(
@@ -83,6 +87,7 @@ def contact_handler(message):
         "Пожалуйста, выберите курс:",
         reply_markup=create_courses_keyboard()
     )
+
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("course_"))
 def course_callback(call):
@@ -104,7 +109,7 @@ def payment_method_callback(call):
 
     if payment_method == "manager":
         bot.edit_message_text(
-            " Свяжитесь с менеджером: @manager_username",
+            " Свяжитесь с менеджером: @unknownnnsu",
             call.message.chat.id,
             call.message.message_id
         )
