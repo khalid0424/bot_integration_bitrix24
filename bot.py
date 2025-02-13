@@ -132,15 +132,17 @@ def tariff_callback(call):
         return
 
     deal_data = {
-        "fields": {
-            "TITLE": f"Покупка курса - {courses[course_id]}",
-            "TYPE_ID": "GOODS",
-            "STAGE_ID": "NEW",
-            "PHONE": [{"VALUE": user_states[user_id]["phone"], "VALUE_TYPE": "WORK"}],
-            "OPPORTUNITY": int(tariffs[tariff_id]["price"]),
-            "COMMENTS": f"Тариф: {tariffs[tariff_id]['name']}\nРеферальная ссылка: {user_states[user_id]['referral_link']}"
-        }
+    "fields": {
+        "TITLE": f"Покупка курса - {courses[course_id]}",
+        "TYPE_ID": "GOODS",
+        "STAGE_ID": "NEW",
+        "PHONE": [{"VALUE": user_states[user_id]["phone"], "VALUE_TYPE": "WORK"}],
+        "OPPORTUNITY": int(tariffs[tariff_id]["price"]),
+        "COMMENTS": f"Тариф: {tariffs[tariff_id]['name']}",
+        "UF_CRM_1739460010": user_states[user_id]['referral_link']  
     }
+}
+
 
     response = requests.post(f"{BITRIX_WEBHOOK_URL}/crm.deal.add", json=deal_data)
 
