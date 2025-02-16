@@ -1,7 +1,8 @@
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import requests
-from refral import TOKEN ,BITRIX_WEBHOOK_URL
+from config import TOKEN, BITRIX_WEBHOOK_URL, manager_username,bot_username, BITRIX_FIELDS , courses , tariffs
+
 
 
 bot = telebot.TeleBot(TOKEN)
@@ -9,22 +10,9 @@ bot = telebot.TeleBot(TOKEN)
 user_states = {}
 referrals = {}
 
-courses = {
-    "course1": "Wileberiser",
-    "course2": "OZON",
-    "course3": "AVITO",
-    "course4": "YANDEX MARKAT"
-}
-
-tariffs = {
-    "tariff1": {"name": "Основной", "price": 500},
-    "tariff2": {"name": "Стандарт", "price": 1000},
-    "tariff3": {"name": "Премиум", "price": 1500},
-    "tariff4": {"name": "VIP", "price": 2000}
-}
 
 def generate_referral_link(user_id):
-    return f"https://t.me/your_bot?start=ref{user_id}"
+    return f"https://t.me/{bot_username}?start=ref{user_id}"
 
 def create_courses_keyboard():
     keyboard = InlineKeyboardMarkup()
@@ -109,7 +97,7 @@ def payment_method_callback(call):
 
     if payment_method == "manager":
         bot.edit_message_text(
-            " Свяжитесь с менеджером: @unknownnnsu",
+            f" Свяжитесь с менеджером: {manager_username} ",
             call.message.chat.id,
             call.message.message_id
         )
@@ -134,16 +122,17 @@ def tariff_callback(call):
 
     deal_data = {
     "fields": {
-        "TITLE": f"Покупка курса - {courses[course_id]}",
-        "TYPE_ID": "GOODS",
-        "STAGE_ID": "NEW",
-        "OPPORTUNITY": int(tariffs[tariff_id]["price"]),
-        "UF_CRM_1739701799": user_states[user_id]["phone"],  
-        "UF_CRM_1739701903": courses[course_id],  
-        "UF_CRM_1739701953": tariffs[tariff_id]["name"],  
-        "UF_CRM_1739702082": user_states[user_id]["referral_link"]  
+        BITRIX_FIELDS["title"]: f"Покупка курса - {courses[course_id]}",
+        BITRIX_FIELDS["type"]: "GOODS",
+        BITRIX_FIELDS["stage"]: "NEW",
+        BITRIX_FIELDS["price"]: int(tariffs[tariff_id]["price"]),
+        BITRIX_FIELDS["phone"]: user_states[user_id]["phone"],
+        BITRIX_FIELDS["course"]: courses[course_id],
+        BITRIX_FIELDS["tariff_name"]: tariffs[tariff_id]["name"],
+        BITRIX_FIELDS["referral"]: user_states[user_id]["referral_link"]
     }
 }
+
 
 
 
