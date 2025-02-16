@@ -131,31 +131,16 @@ def tariff_callback(call):
         bot.send_message(user_id, " Пожалуйста, введите номер телефона!")
         return
 
-    """deal_data = {
-    "fields": {
-        "TITLE": f"Покупка курса - {courses[course_id]}",
-        "TYPE_ID": "GOODS",
-        "STAGE_ID": "NEW",
-        "UF_CRM_1739701799": user_states[user_id]["phone"],  
-        "UF_CRM_1739701903": courses[course_id],  
-        "UF_CRM_1739701953": tariffs[tariff_id]["name"],  
-        "UF_CRM_1739702028": tariffs[tariff_id]["price"],  
-        "UF_CRM_1739702082": user_states[user_id]["referral_link"]  
-    }
-}"""
+
     deal_data = {
     "fields": {
         "TITLE": f"Покупка курса - {courses[course_id]}",
         "TYPE_ID": "GOODS",
         "STAGE_ID": "NEW",
-        "PHONE": [{"VALUE": user_states[user_id]["phone"], "VALUE_TYPE": "WORK"}],
         "OPPORTUNITY": int(tariffs[tariff_id]["price"]),
-        "COMMENTS": f"Тариф: {tariffs[tariff_id]['name']}",
-
         "UF_CRM_1739701799": user_states[user_id]["phone"],  
         "UF_CRM_1739701903": courses[course_id],  
         "UF_CRM_1739701953": tariffs[tariff_id]["name"],  
-        "UF_CRM_1739702028": tariffs[tariff_id]["price"],  
         "UF_CRM_1739702082": user_states[user_id]["referral_link"]  
     }
 }
