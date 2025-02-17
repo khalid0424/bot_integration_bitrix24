@@ -1,6 +1,6 @@
 # токен бота и вебхука битрикса
-TOKEN = '8028992264:AAEJxFS3TlX425oNuIZsluU9YXpFPHELR5c'
-BITRIX_WEBHOOK_URL = "https://b24-7jrcyg.bitrix24.ru/rest/1/krugbkbfookjrsv6/"
+TOKEN = 
+BITRIX_WEBHOOK_URL = 
 #юзернейм менеджера и бота, чтобы можно было отправлять им сообщения
 manager_username ="@Bobo_76"
 bot_username = "@calculator_tecnotoj_bot"
