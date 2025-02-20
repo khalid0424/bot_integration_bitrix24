@@ -6,7 +6,7 @@ from config import TOKEN, BITRIX_WEBHOOK_URL, manager_username, bot_username, BI
 bot = telebot.TeleBot(TOKEN)
 
 user_states = {}
-bloggers 
+
 
 # Проверка конфигурации перед запуском
 required_configs = [TOKEN, BITRIX_WEBHOOK_URL, manager_username, bot_username, BITRIX_FIELDS, courses, tariffs , bloggers ]
