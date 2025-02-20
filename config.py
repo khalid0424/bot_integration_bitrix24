@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-# токен бота и вебхука битрикса
+import requests   #токен бота и вебхука битрикса
 TOKEN = 
 BITRIX_WEBHOOK_URL = 
-=======
-import requests   #токен бота и вебхука битрикса
-TOKEN = '7874300047:AAH4esOCS-fjUVxVxb_WRg9Za60PnvFcCXo'
-BITRIX_WEBHOOK_URL = "https://b24-7jrcyg.bitrix24.ru/rest/1/at06gb8ol8h2h6a1/"
->>>>>>> fbad42a (kholid)
 #юзернейм менеджера и бота, чтобы можно было отправлять им сообщения
 manager_username ="@Bobo_76"
 bot_username = "calculator_tecnotoj_bot"
@@ -56,9 +50,14 @@ tariffs = {
     "tariff3": {"name": "Премиум", "price": 1500},
     "tariff4": {"name": "VIP", "price": 2000}
 }
-<<<<<<< HEAD
-=======
-
+#dict for bloger  бот создаёт рефирални силка толко для блогер 
+bloggers = {
+    "habibulo": 0,
+    "mirzo": 0,
+    "muboriz": 0,
+    "bobo": 0,
+    "jamol": 0
+}
 """def get_products_with_prices():
     response = requests.get(BITRIX_WEBHOOK_URL + "crm.product.list")
     
@@ -74,4 +73,3 @@ tariffs = {
 tariffs = get_products_with_prices()"""
 
 
->>>>>>> fbad42a (kholid)
