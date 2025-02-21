@@ -1,9 +1,9 @@
 import requests   #токен бота и вебхука битрикса
-TOKEN = 
-BITRIX_WEBHOOK_URL = 
+TOKEN = ''
+BITRIX_WEBHOOK_URL = "h"
 #юзернейм менеджера и бота, чтобы можно было отправлять им сообщения
 manager_username ="@Bobo_76"
-bot_username = "calculator_tecnotoj_bot"
+
 
 # dict для сопоставления полей из бота и битрикса
 BITRIX_FIELDS = {
@@ -13,8 +13,8 @@ BITRIX_FIELDS = {
     "price": "OPPORTUNITY",
     "phone": "UF_CRM_1739701799",
     "course": "UF_CRM_1739701903",
-    "tariff_name": "UF_CRM_1739701953"
-    #"referral": "UF_CRM_1740017868"
+    "tariff_name": "UF_CRM_1739701953",
+    "referral": "UF_CRM_1740017868"
 }
 
 # dict для  courses и tariffs
@@ -51,13 +51,7 @@ tariffs = {
     "tariff4": {"name": "VIP", "price": 2000}
 }
 #dict for bloger  бот создаёт рефирални силка толко для блогер 
-bloggers = {
-    "habibulo": 0,
-    "mirzo": 0,
-    "muboriz": 0,
-    "bobo": 0,
-    "jamol": 0
-}
+
 """def get_products_with_prices():
     response = requests.get(BITRIX_WEBHOOK_URL + "crm.product.list")
     
