@@ -159,9 +159,9 @@ def tariff_callback(call):
 
         bot.send_message(user_id, "Спасибо за покупку, ждите подтверждения платежа.")
     except requests.RequestException as e:
-        bot.send_message(user_id, f"Ошибка связи с CRM: {str(e)}. Попробуйте позже.")
+        bot.send_message(user_id, f"Ошибка связи с CRM: . Попробуйте позже.")
     except Exception as e:
-        bot.send_message(user_id, f"Произошла ошибка: {str(e)}. Обратитесь к поддержке.")
+        bot.send_message(user_id, f"Произошла ошибка: . Обратитесь к поддержке.")
 
 @bot.message_handler(commands=["referral_links"])
 def show_referral_links(message):
