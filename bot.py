@@ -6,10 +6,6 @@ from config import TOKEN, BITRIX_WEBHOOK_URL, manager_username, BITRIX_FIELDS, c
 bot = telebot.TeleBot(TOKEN)
 
 user_states = {}
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ec5ed812b9c9d458ee793e0e0ed61349e188c8c
 
 # Проверка конфигурации перед запуском
 required_configs = [TOKEN, BITRIX_WEBHOOK_URL, manager_username, BITRIX_FIELDS, courses, tariffs ]
@@ -136,26 +132,18 @@ def tariff_callback(call):
                 "CONTACT_ID": contact_id,
                 BITRIX_FIELDS["course"]: courses[course_id],
                 BITRIX_FIELDS["tariff_name"]: tariffs[tariff_id]["name"],
-                BITRIX_FIELDS["referral"]: referrer if referrer else "Нет реферера",
+                BITRIX_FIELDS["referral"]: referrer if referrer else "Нет реферера"
             }
         }
 
         response = requests.post(f"{BITRIX_WEBHOOK_URL}/crm.deal.add", json=deal_data, timeout=10)
         response.raise_for_status()
 
-<<<<<<< HEAD
         bot.send_message(user_id, "✅ Спасибо за покупку, ждите подтверждения платежа. 🚀")
     except requests.RequestException:
         bot.send_message(user_id, "❌ Ошибка связи с CRM. Попробуйте позже.")
     except Exception:
         bot.send_message(user_id, "⚠️ Произошла ошибка. Обратитесь к поддержке.")
-=======
-        bot.send_message(user_id, "Спасибо за покупку, ждите подтверждения платежа.")
-    except requests.RequestException as e:
-        bot.send_message(user_id, f"Ошибка связи с CRM: . Попробуйте позже.")
-    except Exception as e:
-        bot.send_message(user_id, f"Произошла ошибка: . Обратитесь к поддержке.")
->>>>>>> 0ec5ed812b9c9d458ee793e0e0ed61349e188c8c
 
 if __name__ == "__main__":
     bot.polling(none_stop=True)
