@@ -141,9 +141,9 @@ def tariff_callback(call):
 
         bot.send_message(user_id, "✅ Спасибо за покупку, ждите подтверждения платежа. 🚀")
     except requests.RequestException:
-        bot.send_message(user_id, "❌ Ошибка связи с CRM. Попробуйте позже.")
+        bot.send_message(user_id, f"❌ Ошибка связи с CRM. Попробуйте позже. 😞Обратитесь к поддержке.{manager_username} ")
     except Exception:
-        bot.send_message(user_id, "⚠️ Произошла ошибка. Обратитесь к поддержке.")
+        bot.send_message(user_id, f"⚠️ Произошла ошибка. Обратитесь к поддержке.{manager_username}")
 
 if __name__ == "__main__":
     bot.polling(none_stop=True)
