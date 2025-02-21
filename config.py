@@ -1,6 +1,6 @@
 import requests   #токен бота и вебхука битрикса
 TOKEN = ''
-BITRIX_WEBHOOK_URL = "h"
+BITRIX_WEBHOOK_URL = ""
 #юзернейм менеджера и бота, чтобы можно было отправлять им сообщения
 manager_username ="@Bobo_76"
 
